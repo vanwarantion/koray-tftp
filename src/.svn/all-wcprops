@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 19
+/svn/!svn/ver/1/src
+END
+client.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/10/src/client.cpp
+END
+fileops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/14/src/fileops.cpp
+END
+fsm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/11/src/fsm.cpp
+END
+server.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/11/src/server.cpp
+END
+netops.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/14/src/netops.cpp
+END

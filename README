@@ -1,0 +1,180 @@
+1. General
+----------
+
+This software package consists of two executables, client and server
+that are the client and server for the Trivial File Transfer Protocol (TFTP)
+
+This two pieces of sofware are developed for the first assignment of the 
+class Computer and Network Programming (CSC8415) at University of 
+Southern Queensland.
+
+Author of this project is Koray Kalmaz (kalmaz@gmail.com), it is available
+for download from http://code.google.com/p/koray-tftp/
+
+2. Installation
+---------------
+
+Step 1, unpack the archive:
+
+tar -xzvf koray-tftp.tar.gz
+
+Step 2, compile:
+
+cd koray-tftp
+make all
+
+After make, executables are going to be created in the bin directory.
+
+3. Examples
+-----------
+
+Please note that both client and server programs are far from complete, 
+thus shall not be trusted in a production environment.
+
+Example 1, :  Uploading a file with client to a server at IP: 10.1.1.10:
+
+    $ ./client 10.1.1.10
+    Host address given
+    Host address given
+    tftp> put file
+    putting file
+    tftp> TX loading for: 0.0.0.0:0
+    I am a client:
+    I will send WRQ
+       Sending packet
+    Received something
+       Op code: 4; 4
+          ACK : 0; 0
+    Make packet:
+       makePacket: size: 512
+       pNo: 1
+       OpCode: 3
+       Sending packet
+    .....
+    TX; Exiting: 1
+
+Example 2, :  Downloading a file with client to a server at IP: 10.1.1.10:
+
+    $ ./client 10.1.1.10
+    Host address given
+    Host address given
+    tftp> get oo   
+    getting oo
+    tftp> RX; loading for: 10.1.1.10:0
+    State: Initialize
+    I am a client:
+    Dumping 12 bytes:
+    0, 1, 6f, 6f, 0, 62, 69, 6e, 61, 72, 79, 0, Dumping c bytes:
+    State: Connected
+    State: Transfer (op->progress < 512)
+    Session timeout: 1388
+    Sending ACK: 0
+    Sent Packet
+    Listening for next data packet
+    memmove ok
+    State: Transfer2
+    Make packet:
+       makePacket: size: 0
+       pNo: 1
+       OpCode: 4
+    Bytes to write: 200
+    Sending ACK: 1
+    Sent Packet
+    Listening for next data packet
+    memmove ok
+    .....
+    RX; Exiting: 1
+
+Example 3, :  Send and Receive operations at server's console:
+
+    ./server 
+    Loading server thread
+    Ready for new client
+    tftpd> NEW; request from: 10.1.1.10:42062
+    Thread created!
+    Ready for new client
+    TX loading for: 10.1.1.10:42062
+       Op code: 4; 0
+          ACK : 0; 0
+    Make packet:
+       makePacket: size: 512
+       pNo: 1
+       OpCode: 3
+       Sending packet
+    Received something
+       Op code: 4; 4
+          ACK : 1; 1
+    Make packet:
+       makePacket: size: 512
+       pNo: 2
+       OpCode: 3
+       Sending packet
+    Received something
+       Op code: 4; 4
+          ACK : 2; 2
+    ....
+    TX; Exiting: 1
+
+    tftpd> 
+    Loading server thread
+    Ready for new client
+    tftpd> NEW; request from: 10.1.1.10:48514
+    Thread created!
+    Ready for new client
+    RX; loading for: 10.1.1.10:48514
+    State: Initialize
+    I am a SERVER
+    State: Connected
+    State: Transfer (op->progress < 512)
+    Session timeout: 7000
+    Sending ACK: 0
+    Sent Packet
+    Listening for next data packet
+    memmove ok
+    State: Transfer2
+    Make packet:
+       makePacket: size: 0
+       pNo: 1
+       OpCode: 4
+    Bytes to write: 512
+    Sending ACK: 1
+    Sent Packet
+    Listening for next data packet
+    memmove ok
+    Make packet:
+       makePacket: size: 0
+       pNo: 2
+        .....
+       OpCode: 4
+    Bytes to write: 10
+    State: Finished
+    Sending ACK: 8
+    Sent Packet
+    Total: 3594
+    RX; Exiting: 1
+
+    tftpd> 
+
+
+
+4. Documentation
+----------------
+
+1. binary for server will attempt to listen at port 69 by default. to 
+override this, a custom port number can be given as parameter.
+
+2. There are also several console commands for managing ongoing transfers.
+entering "help" or "?" will print available commands.
+
+3. host address can be passed to client as parameter.
+
+
+
+5. Known problems
+-----------------
+
+Despite of multi client-server design, Both send and receive operations 
+will fail after being unable to acquire listening socket. binaries must 
+be restarted to overcome this problem.
+
+Only bimary mode is implemented for this version of the software.
