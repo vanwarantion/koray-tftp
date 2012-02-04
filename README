@@ -8,8 +8,8 @@ This two pieces of sofware are developed for the first assignment of the
 class Computer and Network Programming (CSC8415) at University of 
 Southern Queensland.
 
-Author of this project is Koray Kalmaz (kalmaz@gmail.com), it is available
-for download from http://code.google.com/p/koray-tftp/
+Author of this project is Koray Kalmaz (kalmaz@gmail.com), it is also 
+available for download from http://code.google.com/p/koray-tftp/
 
 2. Installation
 ---------------
@@ -29,7 +29,7 @@ After make, executables are going to be created in the bin directory.
 -----------
 
 Please note that both client and server programs are far from complete, 
-thus shall not be trusted in a production environment.
+thus shall not be trusted in any production environment.
 
 Example 1, :  Uploading a file with client to a server at IP: 10.1.1.10:
 
